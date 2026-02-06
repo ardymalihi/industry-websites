@@ -14,7 +14,7 @@ export default function Home() {
           <div className="hidden md:flex items-center space-x-8">
             <a href="#home" className="text-white hover:text-amber-400 transition-colors font-medium">Home</a>
             <a href="#services" className="text-gray-400 hover:text-amber-400 transition-colors">Our Services</a>
-            <a href="#fleet" className="text-gray-400 hover:text-amber-400 transition-colors">Our Fleets</a>
+            <a href="#packages" className="text-gray-400 hover:text-amber-400 transition-colors">Ride Packages</a>
             <a href="#contact" className="text-gray-400 hover:text-amber-400 transition-colors">Contact</a>
           </div>
         </div>
@@ -109,6 +109,77 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Luxury Ride Packages Section (Transformed from Fleet) */}
+        <section id="packages" className="relative py-24 px-6 bg-transparent z-10">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex flex-col md:flex-row items-end justify-between mb-12 border-l-4 border-amber-500 pl-6">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                  Our <span className="text-amber-400">Luxury Packages</span>
+                </h2>
+                <p className="text-gray-400 max-w-xl">Premium curated travel experiences designed for comfort, luxury, and point-to-point perfection.</p>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  name: "Executive VIP Arrival",
+                  vehicle: "2025 Cadillac Escalade",
+                  image: "/images/escalade-hero.png",
+                  price: "From $150",
+                  features: ["Airport Meet & Greet", "Curated Refreshments", "Unlimited WiFi"]
+                },
+                {
+                  name: "Business Group Jet",
+                  vehicle: "Mercedes-Benz V-Class",
+                  image: "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&h=600&fit=crop&q=90",
+                  price: "From $200",
+                  features: ["Up to 6 Passengers", "Table Workstation", "Privacy Glass"]
+                },
+                {
+                  name: "First Class Chauffeur",
+                  vehicle: "Audi A8 L",
+                  image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop&q=90",
+                  price: "From $180",
+                  features: ["Heated Massage Seats", "Champagne Service", "Multilingual Driver"]
+                }
+              ].map((pkg, index) => (
+                <Card key={index} className="bg-black/40 backdrop-blur-md border-gray-800 overflow-hidden group hover:border-amber-500 transition-all flex flex-col h-full">
+                  <div className="aspect-[16/10] overflow-hidden relative">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10 opacity-60"></div>
+                    <FleetImage
+                      src={pkg.image}
+                      alt={pkg.name}
+                      className="group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute bottom-4 left-4 z-20">
+                      <span className="text-amber-400 text-sm font-bold bg-black/80 px-3 py-1 rounded-full border border-amber-500/20">{pkg.price}</span>
+                    </div>
+                  </div>
+                  <CardHeader className="flex-none">
+                    <div className="text-amber-500 text-xs font-bold uppercase tracking-widest mb-1">{pkg.vehicle}</div>
+                    <CardTitle className="text-white text-2xl">{pkg.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="grow flex flex-col justify-between">
+                    <ul className="space-y-3 mb-8">
+                      {pkg.features.map((feature, i) => (
+                        <li key={i} className="flex items-center text-gray-400 text-sm">
+                          <CheckCircle2 className="w-4 h-4 text-amber-500 mr-2" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className="w-full bg-amber-500 hover:bg-amber-600 text-black font-bold py-6 group">
+                      Book This Ride
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* Features Section */}
@@ -133,87 +204,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fleet Section */}
-      <section id="fleet" className="py-20 px-6 bg-black">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex items-center justify-between mb-12">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Our <span className="text-amber-400">Fleet</span>
-              </h2>
-              <p className="text-gray-400">Hand-selected premium vehicles for the ultimate travel experience</p>
-            </div>
-            <div className="hidden md:flex gap-2">
-              {['All', 'Luxury', 'Business', 'Crossover'].map((filter) => (
-                <button
-                  key={filter}
-                  className={`px-6 py-2 rounded-lg font-medium transition-colors ${filter === 'All'
-                    ? 'bg-amber-500 text-black'
-                    : 'bg-gray-900 text-gray-400 hover:text-white border border-gray-800'
-                    }`}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "2025 Cadillac Escalade",
-                image: "/images/escalade-hero.png",
-                passengers: 7,
-                luggage: 4,
-                category: "Luxury SUV"
-              },
-              {
-                name: "Mercedes-Benz V-Class",
-                image: "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&h=600&fit=crop&q=90",
-                passengers: 6,
-                luggage: 4,
-                category: "Luxury Van"
-              },
-              {
-                name: "Audi A8",
-                image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop&q=90",
-                passengers: 4,
-                luggage: 2,
-                category: "Luxury Sedan"
-              }
-            ].map((vehicle, index) => (
-              <Card key={index} className="bg-gray-900 border-gray-800 overflow-hidden group hover:border-amber-500/50 transition-all">
-                <div className="aspect-video overflow-hidden bg-gray-800">
-                  <FleetImage
-                    src={vehicle.image}
-                    alt={vehicle.name}
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-white">{vehicle.name}</CardTitle>
-                  <CardDescription className="text-gray-400">{vehicle.category}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between text-sm">
-                    <div className="flex items-center space-x-2 text-gray-400">
-                      <Users className="w-4 h-4" />
-                      <span>{vehicle.passengers} Passengers</span>
-                    </div>
-                    <div className="flex items-center space-x-2 text-gray-400">
-                      <Car className="w-4 h-4" />
-                      <span>{vehicle.luggage} Bags</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Button className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-8 py-6 text-lg">
-              View All Vehicles
-            </Button>
-          </div>
-        </div>
-      </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6 bg-gray-900">
