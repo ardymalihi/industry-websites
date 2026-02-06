@@ -21,7 +21,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section with Cadillac Escalade */}
-      <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <section id="home" className="relative py-24 md:py-32 flex items-center overflow-hidden">
         {/* Background with overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
@@ -31,8 +31,8 @@ export default function Home() {
         <div className="container mx-auto px-6 relative z-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Text Content */}
-            <div className="space-y-10">
-              <div className="space-y-6">
+            <div className="space-y-8">
+              <div className="space-y-4">
                 <div className="inline-flex items-center space-x-3 px-5 py-2.5 bg-amber-500/10 border border-amber-500/20 rounded-full backdrop-blur-sm">
                   <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                   <span className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">The Pinnacle of Travel</span>
