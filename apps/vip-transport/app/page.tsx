@@ -45,7 +45,7 @@ export default function Home() {
                   Your <span className="text-amber-400">Ultimate</span> Luxury Drive Awaits
                 </h1>
                 <p className="text-xl text-gray-300 leading-relaxed max-w-lg">
-                  Experience the pinnacle of comfort and elegance with our premium fleet of luxury vehicles. 
+                  Experience the pinnacle of comfort and elegance with our premium fleet of luxury vehicles.
                   Professional chauffeurs, impeccable service, and unmatched reliability.
                 </p>
               </div>
@@ -59,9 +59,9 @@ export default function Home() {
                         <MapPinIcon className="w-4 h-4" />
                         <span>Location</span>
                       </label>
-                      <input 
-                        type="text" 
-                        placeholder="City Or Airport" 
+                      <input
+                        type="text"
+                        placeholder="City Or Airport"
                         className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-colors"
                       />
                     </div>
@@ -70,9 +70,9 @@ export default function Home() {
                         <Calendar className="w-4 h-4" />
                         <span>Pick Up Date</span>
                       </label>
-                      <input 
-                        type="text" 
-                        placeholder="Select Date" 
+                      <input
+                        type="text"
+                        placeholder="Select Date"
                         className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-colors"
                       />
                     </div>
@@ -81,9 +81,9 @@ export default function Home() {
                         <Calendar className="w-4 h-4" />
                         <span>Return Date</span>
                       </label>
-                      <input 
-                        type="text" 
-                        placeholder="Select Date" 
+                      <input
+                        type="text"
+                        placeholder="Select Date"
                         className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-colors"
                       />
                     </div>
@@ -101,7 +101,7 @@ export default function Home() {
                 <span className="text-gray-400 text-sm">Popular Search:</span>
                 <div className="flex flex-wrap gap-2">
                   {['Cadillac Escalade', 'Mercedes S-Class', 'BMW 7 Series'].map((item) => (
-                    <button 
+                    <button
                       key={item}
                       className="px-4 py-2 bg-gray-900 border border-gray-800 rounded-full text-sm text-gray-300 hover:border-amber-500 hover:text-amber-400 transition-colors"
                     >
@@ -175,9 +175,9 @@ export default function Home() {
               }
             ].map((service, index) => (
               <Card key={index} className="bg-gray-900 border-gray-800 overflow-hidden group hover:border-amber-500/50 transition-all cursor-pointer">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <FleetImage 
-                    src={service.image} 
+                <div className="aspect-video overflow-hidden">
+                  <FleetImage
+                    src={service.image}
                     alt={service.title}
                   />
                 </div>
@@ -227,11 +227,10 @@ export default function Home() {
               {['All', 'Luxury', 'Business', 'Crossover'].map((filter) => (
                 <button
                   key={filter}
-                  className={`px-6 py-2 rounded-lg font-medium transition-colors ${
-                    filter === 'All'
+                  className={`px-6 py-2 rounded-lg font-medium transition-colors ${filter === 'All'
                       ? 'bg-amber-500 text-black'
                       : 'bg-gray-900 text-gray-400 hover:text-white border border-gray-800'
-                  }`}
+                    }`}
                 >
                   {filter}
                 </button>
@@ -263,9 +262,9 @@ export default function Home() {
               }
             ].map((vehicle, index) => (
               <Card key={index} className="bg-gray-900 border-gray-800 overflow-hidden group hover:border-amber-500/50 transition-all">
-                <div className="aspect-[4/3] overflow-hidden bg-gray-800">
-                  <FleetImage 
-                    src={vehicle.image} 
+                <div className="aspect-video overflow-hidden bg-gray-800">
+                  <FleetImage
+                    src={vehicle.image}
                     alt={vehicle.name}
                   />
                 </div>

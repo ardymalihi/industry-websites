@@ -20,8 +20,8 @@ All UI components in `packages/ui/` should be built using Tailwind CSS and can e
 ```
 industry-websites/
 ├── apps/
-│   ├── vip-transport/      # Independent Next.js app (port 3000)
-│   ├── website-b/          # Independent Next.js app (port 3001)
+│   ├── vip-transport/      # Independent Next.js app (port 7070)
+│   ├── website-b/          # Independent Next.js app (port 7071)
 │   └── [future-apps]/      # Additional apps can be added
 │
 ├── packages/

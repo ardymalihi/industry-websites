@@ -15,14 +15,14 @@ All UI components in `packages/ui/` are built using Tailwind CSS and extend shad
 ```
 industry-websites/
 ├── apps/
-│   ├── vip-transport/      # Independent Next.js app (port 3000)
+│   ├── vip-transport/      # Independent Next.js app (port 7070)
 │   │   ├── app/
 │   │   ├── next.config.js
 │   │   ├── package.json
 │   │   ├── tsconfig.json
 │   │   └── .env.local
 │   │
-│   ├── website-b/          # Independent Next.js app (port 3001)
+│   ├── website-b/          # Independent Next.js app (port 7071)
 │   │   ├── app/
 │   │   ├── next.config.js
 │   │   ├── package.json
@@ -66,7 +66,7 @@ npm run dev
 
 Or start individual apps (from root or inside app directory):
 ```bash
-# VIP Transport (port 3000)
+# VIP Transport (port 6000)
 cd apps/vip-transport
 npm run dev  # Runs only vip-transport dev server
 
