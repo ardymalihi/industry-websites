@@ -34,21 +34,32 @@ industry-websites/
 - Each app has its own `.env.local` and database configuration
 - Can be deployed independently
 - Never use relative imports to access other apps
+- **App-specific code only** - If code can be reused, it should be in a package, not in the app
 
 ### Packages (`packages/*`)
-- **Shared libraries only**
+- **All common/shared functionality goes here**
 - Must be marked as `"private": true` in package.json
 - **Never access `process.env`** or assume a database
 - **Never assume Next.js runtime** - packages are runtime-agnostic
 - Apps read environment variables and pass configuration to packages
+
+**What belongs in packages:**
+- ✅ **Common UI components** - Reusable React components, design system components
+- ✅ **Common libraries** - Shared utilities, helpers, formatters
+- ✅ **Common resources** - Assets, images, fonts, icons, scripts, static files
+- ✅ **Intent Flow Platform Communication** - API clients, authentication, platform integration
+- ✅ **Shared business logic** - Common functions used across multiple apps
+- ✅ **Third-party integrations** - Wrappers for external services
+- ✅ **Type definitions** - Shared TypeScript types and interfaces
+- ✅ **Any reusable code or resources** - If it's used by more than one app, it belongs in a package
 
 ### Import Rules
 
 **Always use package-style imports:**
 ```ts
 // ✅ CORRECT
-import { Button } from '@my-org/ui';
-import { formatDate } from '@my-org/utils';
+import { Button } from '@intent-flow-package/ui';
+import { formatDate } from '@intent-flow-package/utils';
 
 // ❌ WRONG - Never use relative imports across apps
 import { Button } from '../../packages/ui/src';
@@ -60,9 +71,19 @@ When adding shared functionality that should be reused across apps:
 
 ### 1. Determine the Right Package
 
-- **UI Components** → `packages/ui/src/`
-- **Utility Functions** → `packages/utils/src/`
-- **New Domain** → Create `packages/[domain-name]/src/`
+**Rule of thumb**: If code is used by more than one app, it belongs in a package.
+
+- **Common UI Components** → `packages/ui/src/`
+- **Utility Functions & Libraries** → `packages/utils/src/`
+- **Common Resources** → Create `packages/assets/` or `packages/resources/` for images, fonts, icons, scripts, static files
+- **Intent Flow Platform API/Communication** → Create `packages/intent-flow-api/src/` or add to appropriate package
+- **Shared Libraries** → Create `packages/[library-name]/src/` (e.g., `packages/forms/`, `packages/auth/`, `packages/validation/`)
+- **New Domain/Feature** → Create `packages/[domain-name]/src/`
+
+**Important**: 
+- All common functionality, UI components, libraries, and shared code must go in packages
+- Apps should only contain app-specific code (routes, pages, app-specific configurations)
+- If you find yourself copying code between apps, it should be moved to a package
 
 ### 2. Add to Existing Package
 
@@ -85,6 +106,39 @@ export { Card } from './Card';
 export type { CardProps } from './Card';
 ```
 
+### 2b. Adding Common Resources
+
+Example: Adding shared assets to `packages/assets/`:
+
+```
+packages/assets/
+├── images/
+│   ├── logo.png
+│   └── icons/
+├── fonts/
+│   ├── custom-font.woff2
+│   └── custom-font.woff
+├── scripts/
+│   └── analytics.js
+└── package.json
+```
+
+```json
+// packages/assets/package.json
+{
+  "name": "@intent-flow-package/assets",
+  "version": "1.0.0",
+  "private": true
+}
+```
+
+Usage in apps:
+```tsx
+// In app
+import logo from '@intent-flow-package/assets/images/logo.png';
+import '@intent-flow-package/assets/fonts/custom-font.css';
+```
+
 ### 3. Create New Package (if needed)
 
 If creating a new shared package:
@@ -93,7 +147,7 @@ If creating a new shared package:
 2. Create `package.json`:
 ```json
 {
-  "name": "@my-org/my-package",
+  "name": "@intent-flow-package/my-package",
   "version": "1.0.0",
   "private": true,
   "main": "./src/index.ts",
@@ -106,7 +160,7 @@ If creating a new shared package:
 {
   "compilerOptions": {
     "paths": {
-      "@my-org/my-package": ["./packages/my-package/src"]
+      "@intent-flow-package/my-package": ["./packages/my-package/src"]
     }
   }
 }
@@ -114,13 +168,65 @@ If creating a new shared package:
 
 4. Update app `next.config.js` to transpile:
 ```js
-transpilePackages: ['@my-org/ui', '@my-org/utils', '@my-org/my-package']
+transpilePackages: ['@intent-flow-package/ui', '@intent-flow-package/utils', '@intent-flow-package/my-package']
 ```
 
 5. Use in apps:
 ```ts
-import { something } from '@my-org/my-package';
+import { something } from '@intent-flow-package/my-package';
 ```
+
+## Intent Flow Platform Communication
+
+**Critical Rule**: All logic related to communicating with the intent-flow platform must be implemented in packages, not in apps.
+
+### Intent Flow API Package
+
+When adding intent-flow platform communication:
+
+1. **Create or use a dedicated package** for intent-flow API communication:
+   - Create `packages/intent-flow-api/src/` for API clients and platform communication
+   - Or add to an existing appropriate package if it fits the domain
+
+2. **Example structure**:
+```ts
+// packages/intent-flow-api/src/client.ts
+export interface IntentFlowConfig {
+  apiUrl: string;
+  apiKey: string;
+}
+
+export function createIntentFlowClient(config: IntentFlowConfig) {
+  return {
+    async fetchData(endpoint: string) {
+      // API call logic here
+      return fetch(`${config.apiUrl}/${endpoint}`, {
+        headers: { 'Authorization': `Bearer ${config.apiKey}` }
+      });
+    }
+  };
+}
+```
+
+3. **Apps use the package**:
+```ts
+// In app (e.g., apps/vip-transport/app/page.tsx)
+import { createIntentFlowClient } from '@intent-flow-package/intent-flow-api';
+
+const client = createIntentFlowClient({
+  apiUrl: process.env.NEXT_PUBLIC_INTENT_FLOW_API_URL!,
+  apiKey: process.env.NEXT_PUBLIC_INTENT_FLOW_API_KEY!
+});
+
+const data = await client.fetchData('endpoint');
+```
+
+### Why Packages for Platform Communication?
+
+- **Reusability**: All apps can use the same platform communication logic
+- **Consistency**: Ensures all apps communicate with the platform in the same way
+- **Maintainability**: Platform API changes only need to be updated in one place
+- **Testing**: Platform communication logic can be tested independently
 
 ## Package Development Guidelines
 
@@ -169,7 +275,11 @@ export function calculatePercentage(value: number, percentage: number) { ... }
 ## Important Constraints
 
 - **Do not merge apps** - Each app is independent
-- **Do not add business logic to packages** - Keep packages generic
+- **All common functionality in packages** - UI components, libraries, utilities, platform communication, shared business logic
+- **All common resources in packages** - Assets, images, fonts, icons, scripts, static files
+- **Apps contain app-specific code only** - Routes, pages, app-specific configurations
 - **Do not publish packages** - All packages are private
-- **Do not use relative imports across apps** - Always use package names
+- **Do not use relative imports across apps** - Always use package names (`@intent-flow-package/*`)
+- **No code or resource duplication** - If code or resources are used by multiple apps, they must be in a package
+- **Intent Flow Platform communication** - All API calls, authentication, and platform communication logic must be in packages, never in apps
 - **Focus on structure, isolation, and workspace linking**

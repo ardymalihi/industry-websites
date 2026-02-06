@@ -1,8 +1,8 @@
 {
-  "name": "industry-websites-monorepo",
+  "name": "@intent-flow-package/monorepo",
   "version": "1.0.0",
   "private": true,
-  "description": "Monorepo for multiple independent Next.js applications",
+  "description": "Intent Flow Package - Monorepo for multiple independent Next.js applications",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -17,6 +17,7 @@
     "turbo": "^2.3.3",
     "typescript": "^5.7.2"
   },
+  "packageManager": "npm@10.8.1",
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=9.0.0"

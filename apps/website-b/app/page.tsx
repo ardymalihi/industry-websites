@@ -1,5 +1,5 @@
-import { Button } from '@my-org/ui';
-import { formatDate, formatCurrency, truncate } from '@my-org/utils';
+import { Button } from '@intent-flow-package/ui';
+import { formatDate, formatCurrency, truncate } from '@intent-flow-package/utils';
 
 export default function Home() {
   const today = new Date();

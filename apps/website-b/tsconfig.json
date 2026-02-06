@@ -4,8 +4,8 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@/*": ["./*"],
-      "@my-org/ui": ["../../packages/ui/src"],
-      "@my-org/utils": ["../../packages/utils/src"]
+      "@intent-flow-package/ui": ["../../packages/ui/src"],
+      "@intent-flow-package/utils": ["../../packages/utils/src"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -1,5 +1,5 @@
-import { Button } from '@my-org/ui';
-import { formatDate, formatCurrency } from '@my-org/utils';
+import { Button } from '@intent-flow-package/ui';
+import { formatDate, formatCurrency } from '@intent-flow-package/utils';
 
 export default function Home() {
   const today = new Date();
@@ -20,8 +20,8 @@ export default function Home() {
             It uses shared packages from the monorepo:
           </p>
           <ul className="list-disc list-inside mb-4 space-y-2">
-            <li><code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">@my-org/ui</code> - Shared UI components</li>
-            <li><code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">@my-org/utils</code> - Shared utilities</li>
+            <li><code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">@intent-flow-package/ui</code> - Shared UI components</li>
+            <li><code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">@intent-flow-package/utils</code> - Shared utilities</li>
           </ul>
         </div>
 

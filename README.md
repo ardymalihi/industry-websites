@@ -1,4 +1,4 @@
-# Industry Websites Monorepo
+# Intent Flow Package Monorepo
 
 Intent flow industry standard websites - A monorepo for multiple independent Next.js applications that share code safely, without publishing any packages.
 
@@ -69,24 +69,24 @@ npm run dev
 
 ## 📦 Shared Packages
 
-### `@my-org/ui`
+### `@intent-flow-package/ui`
 
 Shared UI components that can be used across all apps.
 
 **Example:**
 ```tsx
-import { Button } from '@my-org/ui';
+import { Button } from '@intent-flow-package/ui';
 
 <Button variant="primary" size="md">Click me</Button>
 ```
 
-### `@my-org/utils`
+### `@intent-flow-package/utils`
 
 Shared utility functions that are runtime-agnostic.
 
 **Example:**
 ```ts
-import { formatDate, formatCurrency } from '@my-org/utils';
+import { formatDate, formatCurrency } from '@intent-flow-package/utils';
 
 const date = formatDate(new Date());
 const price = formatCurrency(99.99, 'USD');
@@ -104,7 +104,7 @@ const price = formatCurrency(99.99, 'USD');
 Always use package-style imports:
 ```ts
 // ✅ Correct
-import { Button } from '@my-org/ui';
+import { Button } from '@intent-flow-package/ui';
 
 // ❌ Wrong - never use relative imports across apps
 import { Button } from '../../packages/ui/src';
@@ -132,7 +132,7 @@ mkdir -p packages/my-package/src
 2. Create `package.json`:
 ```json
 {
-  "name": "@my-org/my-package",
+  "name": "@intent-flow-package/my-package",
   "version": "1.0.0",
   "private": true,
   "main": "./src/index.ts",
@@ -145,7 +145,7 @@ mkdir -p packages/my-package/src
 {
   "compilerOptions": {
     "paths": {
-      "@my-org/my-package": ["./packages/my-package/src"]
+      "@intent-flow-package/my-package": ["./packages/my-package/src"]
     }
   }
 }
@@ -153,7 +153,7 @@ mkdir -p packages/my-package/src
 
 4. Use in apps:
 ```ts
-import { something } from '@my-org/my-package';
+import { something } from '@intent-flow-package/my-package';
 ```
 
 ### Adding a New App
@@ -169,8 +169,8 @@ mkdir -p apps/my-app/app
 ```json
 {
   "dependencies": {
-    "@my-org/ui": "*",
-    "@my-org/utils": "*"
+    "@intent-flow-package/ui": "*",
+    "@intent-flow-package/utils": "*"
   }
 }
 ```
@@ -178,7 +178,7 @@ mkdir -p apps/my-app/app
 4. Configure `next.config.js` to transpile packages:
 ```js
 const nextConfig = {
-  transpilePackages: ['@my-org/ui', '@my-org/utils'],
+  transpilePackages: ['@intent-flow-package/ui', '@intent-flow-package/utils'],
 };
 ```
 

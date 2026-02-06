@@ -1,5 +1,5 @@
 {
-  "name": "@my-org/utils",
+  "name": "@intent-flow-package/utils",
   "version": "1.0.0",
   "private": true,
   "main": "./src/index.ts",
