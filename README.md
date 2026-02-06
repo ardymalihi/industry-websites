@@ -59,21 +59,23 @@ industry-websites/
 npm install
 ```
 
-2. Start all apps in development mode:
+2. Start all apps in development mode (from root):
 ```bash
 npm run dev
 ```
 
-Or start individual apps:
+Or start individual apps (from root or inside app directory):
 ```bash
 # VIP Transport (port 3000)
 cd apps/vip-transport
-npm run dev
+npm run dev  # Runs only vip-transport dev server
 
 # Website B (port 3001)
 cd apps/website-b
-npm run dev
+npm run dev  # Runs only website-b dev server
 ```
+
+**Note**: When you run `npm run dev` inside a specific app directory, it will only start that app's dev server, not all apps. The root `npm run dev` uses Turborepo to run all apps in parallel.
 
 ## 📦 Shared Packages
 
