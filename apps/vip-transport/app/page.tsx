@@ -21,7 +21,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section with Cadillac Escalade */}
-      <section id="home" className="relative py-24 md:py-32 flex items-center overflow-hidden">
+      <section id="home" className="relative py-24 md:py-32 flex items-center overflow-hidden group">
         {/* Background with overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
