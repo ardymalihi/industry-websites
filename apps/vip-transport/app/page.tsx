@@ -62,13 +62,15 @@ export default function Home() {
         {/* Services Section */}
         <section id="services" className="relative pt-24 pb-32 px-6 bg-transparent z-10">
           <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Our <span className="text-amber-400">Services</span>
-              </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                Experience, trust, and unmatched service crafted over the years
-              </p>
+            <div className="flex flex-col md:flex-row items-end justify-between mb-12 border-l-4 border-amber-500 pl-6">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                  Our <span className="text-amber-400">Services</span>
+                </h2>
+                <p className="text-gray-400 max-w-xl">
+                  Experience, trust, and unmatched service crafted over the years
+                </p>
+              </div>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
