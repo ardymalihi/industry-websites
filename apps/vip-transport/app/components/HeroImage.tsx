@@ -11,12 +11,11 @@ export function HeroImage() {
       <img
         src={imgSrc}
         alt="2025 Cadillac Escalade - Premium VIP Transportation"
-        className="w-full h-full object-cover rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-white/5"
+        className="w-full h-full object-cover rounded-2xl"
         onError={() => {
           setImgSrc(fallbackSrc);
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"></div>
     </div>
   );
 }
