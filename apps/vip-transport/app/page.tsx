@@ -28,92 +28,33 @@ export default function Home() {
       <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
         {/* Background with overlay */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/70 z-10"></div>
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1514565131-fce0801e5785?w=1920&h=1080&fit=crop')] bg-cover bg-center opacity-20"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-[url('/images/abstract-bg.png')] bg-cover bg-center opacity-60 mix-blend-screen"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Text Content */}
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <div className="inline-flex items-center space-x-2 px-4 py-2 bg-amber-500/20 border border-amber-500/30 rounded-full">
-                  <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-                  <span className="text-amber-400 text-sm font-medium">Premium VIP Transportation</span>
+            <div className="space-y-10">
+              <div className="space-y-6">
+                <div className="inline-flex items-center space-x-3 px-5 py-2.5 bg-amber-500/10 border border-amber-500/20 rounded-full backdrop-blur-sm">
+                  <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+                  <span className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">The Pinnacle of Travel</span>
                 </div>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                  Your <span className="text-amber-400">Ultimate</span> Luxury Drive Awaits
+                <h1 className="text-7xl md:text-8xl lg:text-[10rem] font-bold leading-[0.8] tracking-tighter">
+                  Your <br />
+                  <span className="text-amber-500 drop-shadow-[0_0_30px_rgba(245,158,11,0.3)]">Ultimate</span> <br />
+                  Luxury Drive
                 </h1>
-                <p className="text-xl text-gray-300 leading-relaxed max-w-lg">
-                  Experience the pinnacle of comfort and elegance with our premium fleet of luxury vehicles.
-                  Professional chauffeurs, impeccable service, and unmatched reliability.
+                <p className="text-2xl text-gray-400 leading-relaxed max-w-xl font-light">
+                  Redefining the art of travel with a curated selection of world-class vehicles and service that transcends expectations.
                 </p>
-              </div>
-
-              {/* Booking Form */}
-              <Card className="bg-gray-900/90 border-gray-800 backdrop-blur-sm">
-                <CardContent className="p-6">
-                  <div className="grid md:grid-cols-4 gap-4">
-                    <div className="space-y-2">
-                      <label className="text-sm text-gray-400 flex items-center space-x-2">
-                        <MapPinIcon className="w-4 h-4" />
-                        <span>Location</span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="City Or Airport"
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-colors"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm text-gray-400 flex items-center space-x-2">
-                        <Calendar className="w-4 h-4" />
-                        <span>Pick Up Date</span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Select Date"
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-colors"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm text-gray-400 flex items-center space-x-2">
-                        <Calendar className="w-4 h-4" />
-                        <span>Return Date</span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Select Date"
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-colors"
-                      />
-                    </div>
-                    <div className="flex items-end">
-                      <Button className="w-full bg-amber-500 hover:bg-amber-600 text-black font-semibold h-[52px]">
-                        Search
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Popular Searches */}
-              <div className="flex items-center space-x-4">
-                <span className="text-gray-400 text-sm">Popular Search:</span>
-                <div className="flex flex-wrap gap-2">
-                  {['Cadillac Escalade', 'Mercedes S-Class', 'BMW 7 Series'].map((item) => (
-                    <button
-                      key={item}
-                      className="px-4 py-2 bg-gray-900 border border-gray-800 rounded-full text-sm text-gray-300 hover:border-amber-500 hover:text-amber-400 transition-colors"
-                    >
-                      {item}
-                    </button>
-                  ))}
-                </div>
               </div>
             </div>
 
             {/* Right Column - Cadillac Escalade Image */}
             <div className="relative lg:block hidden">
+              <div className="absolute -inset-20 bg-amber-500/10 blur-[100px] rounded-full pointer-events-none"></div>
               <HeroImage />
             </div>
           </div>
@@ -228,8 +169,8 @@ export default function Home() {
                 <button
                   key={filter}
                   className={`px-6 py-2 rounded-lg font-medium transition-colors ${filter === 'All'
-                      ? 'bg-amber-500 text-black'
-                      : 'bg-gray-900 text-gray-400 hover:text-white border border-gray-800'
+                    ? 'bg-amber-500 text-black'
+                    : 'bg-gray-900 text-gray-400 hover:text-white border border-gray-800'
                     }`}
                 >
                   {filter}

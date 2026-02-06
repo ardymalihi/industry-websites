@@ -8,10 +8,10 @@ export function HeroImage() {
 
   return (
     <div className="relative aspect-video">
-      <img 
-        src={imgSrc} 
-        alt="2025 Cadillac Escalade - Premium VIP Transportation" 
-        className="w-full h-full object-cover rounded-2xl shadow-2xl"
+      <img
+        src={imgSrc}
+        alt="2025 Cadillac Escalade - Premium VIP Transportation"
+        className="w-full h-full object-cover rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-white/5"
         onError={() => {
           setImgSrc(fallbackSrc);
         }}
