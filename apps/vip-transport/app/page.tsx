@@ -93,11 +93,13 @@ export default function Home() {
                   description: "Exclusive vehicle charter options"
                 }
               ].map((service, index) => (
-                <Card key={index} className="bg-gray-900 border-gray-800 overflow-hidden group hover:border-amber-500/50 transition-all cursor-pointer">
-                  <div className="aspect-video overflow-hidden">
+                <Card key={index} className="bg-gray-900/50 backdrop-blur-sm border-gray-800 overflow-hidden group hover:border-amber-500/50 transition-all duration-500 cursor-pointer hover:-translate-y-1">
+                  <div className="aspect-video overflow-hidden relative">
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                     <FleetImage
                       src={service.image}
                       alt={service.title}
+                      className="group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>
                   <CardHeader>
@@ -192,11 +194,11 @@ export default function Home() {
               { icon: Car, title: "Largest Fleet", desc: "Extensive fleet including sedans, limousines and coach buses" },
               { icon: Globe, title: "Nationwide Service", desc: "Transportation services available nationwide" }
             ].map((feature, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-amber-500/20 border border-amber-500/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <feature.icon className="w-8 h-8 text-amber-400" />
+              <div key={index} className="text-center group">
+                <div className="w-16 h-16 bg-amber-500/10 border border-amber-500/20 group-hover:border-amber-500/50 group-hover:bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110">
+                  <feature.icon className="w-8 h-8 text-amber-500 group-hover:text-amber-400 transition-colors" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
+                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-amber-400 transition-colors">{feature.title}</h3>
                 <p className="text-gray-400 text-sm">{feature.desc}</p>
               </div>
             ))}
