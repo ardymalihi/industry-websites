@@ -20,113 +20,96 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section with Cadillac Escalade */}
-      <section id="home" className="relative pt-24 md:pt-32 pb-20 md:pb-30 flex items-center overflow-hidden group">
-        {/* Background with overlay */}
-        <div className="absolute inset-0">
+      <div className="relative">
+        {/* Shared Background for Hero and Services */}
+        <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
-          <div className="absolute inset-0 bg-[url('/images/abstract-bg.png')] bg-cover bg-center opacity-60 mix-blend-screen"></div>
+          <div className="absolute inset-0 bg-[url('/images/abstract-bg.png')] bg-cover bg-center opacity-40 mix-blend-screen"></div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Text Content */}
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <div className="inline-flex items-center space-x-3 px-5 py-2.5 bg-amber-500/10 border border-amber-500/20 rounded-full backdrop-blur-sm">
-                  <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-                  <span className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">The Pinnacle of Travel</span>
+        {/* Hero Section with Cadillac Escalade */}
+        <section id="home" className="relative pt-24 md:pt-32 pb-20 md:pb-30 flex items-center overflow-hidden group z-10">
+
+          <div className="container mx-auto px-6 relative z-20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Text Content */}
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <div className="inline-flex items-center space-x-3 px-5 py-2.5 bg-amber-500/10 border border-amber-500/20 rounded-full backdrop-blur-sm">
+                    <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+                    <span className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">The Pinnacle of Travel</span>
+                  </div>
+                  <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight">
+                    Your <br />
+                    <span className="text-amber-500">Ultimate</span> <br />
+                    Luxury Drive
+                  </h1>
+                  <p className="text-xl text-gray-400 leading-relaxed max-w-lg font-light">
+                    Redefining the art of travel with a curated selection of world-class vehicles and service that transcends expectations.
+                  </p>
                 </div>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight">
-                  Your <br />
-                  <span className="text-amber-500">Ultimate</span> <br />
-                  Luxury Drive
-                </h1>
-                <p className="text-xl text-gray-400 leading-relaxed max-w-lg font-light">
-                  Redefining the art of travel with a curated selection of world-class vehicles and service that transcends expectations.
-                </p>
+              </div>
+
+              {/* Right Column - Cadillac Escalade Image */}
+              <div className="relative lg:block hidden">
+                <div className="absolute -inset-20 bg-amber-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+                <HeroImage />
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Right Column - Cadillac Escalade Image */}
-            <div className="relative lg:block hidden">
-              <div className="absolute -inset-20 bg-amber-500/10 blur-[100px] rounded-full pointer-events-none"></div>
-              <HeroImage />
+        {/* Services Section */}
+        <section id="services" className="relative pt-24 pb-32 px-6 bg-transparent z-10">
+          <div className="container mx-auto max-w-6xl">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                Our <span className="text-amber-400">Services</span>
+              </h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                Experience, trust, and unmatched service crafted over the years
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  title: "Intercity Trips",
+                  image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop&q=80",
+                  description: "Long-distance luxury travel"
+                },
+                {
+                  title: "Business Meeting",
+                  image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&h=400&fit=crop&q=80",
+                  description: "Professional corporate transportation"
+                },
+                {
+                  title: "Airport Transfer",
+                  image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop&q=80",
+                  description: "Punctual airport pickups and drop-offs"
+                },
+                {
+                  title: "Charter Service",
+                  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&q=80",
+                  description: "Exclusive vehicle charter options"
+                }
+              ].map((service, index) => (
+                <Card key={index} className="bg-gray-900 border-gray-800 overflow-hidden group hover:border-amber-500/50 transition-all cursor-pointer">
+                  <div className="aspect-video overflow-hidden">
+                    <FleetImage
+                      src={service.image}
+                      alt={service.title}
+                    />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-white">{service.title}</CardTitle>
+                    <CardDescription className="text-gray-400">{service.description}</CardDescription>
+                  </CardHeader>
+                </Card>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-gray-900 border-y border-gray-800">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-5xl font-bold text-amber-400 mb-2">200+</div>
-              <div className="text-gray-400">Luxury Vehicles</div>
-            </div>
-            <div>
-              <div className="text-5xl font-bold text-amber-400 mb-2">10+</div>
-              <div className="text-gray-400">Years Experience</div>
-            </div>
-            <div>
-              <div className="text-5xl font-bold text-amber-400 mb-2">4.9</div>
-              <div className="text-gray-400">Customer Rating</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-20 px-6 bg-black">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Our <span className="text-amber-400">Services</span>
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Experience, trust, and unmatched service crafted over the years
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: "Intercity Trips",
-                image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop&q=80",
-                description: "Long-distance luxury travel"
-              },
-              {
-                title: "Business Meeting",
-                image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&h=400&fit=crop&q=80",
-                description: "Professional corporate transportation"
-              },
-              {
-                title: "Airport Transfer",
-                image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop&q=80",
-                description: "Punctual airport pickups and drop-offs"
-              },
-              {
-                title: "Charter Service",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&q=80",
-                description: "Exclusive vehicle charter options"
-              }
-            ].map((service, index) => (
-              <Card key={index} className="bg-gray-900 border-gray-800 overflow-hidden group hover:border-amber-500/50 transition-all cursor-pointer">
-                <div className="aspect-video overflow-hidden">
-                  <FleetImage
-                    src={service.image}
-                    alt={service.title}
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-white">{service.title}</CardTitle>
-                  <CardDescription className="text-gray-400">{service.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Features Section */}
       <section className="py-20 px-6 bg-gray-900">
