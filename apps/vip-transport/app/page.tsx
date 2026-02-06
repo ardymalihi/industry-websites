@@ -17,10 +17,6 @@ export default function Home() {
             <a href="#fleet" className="text-gray-400 hover:text-amber-400 transition-colors">Our Fleets</a>
             <a href="#contact" className="text-gray-400 hover:text-amber-400 transition-colors">Contact</a>
           </div>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-white hover:text-amber-400">Sign In</Button>
-            <Button className="bg-amber-500 hover:bg-amber-600 text-black font-semibold">Sign Up</Button>
-          </div>
         </div>
       </nav>
 
