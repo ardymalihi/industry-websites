@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Outfit, Playfair_Display } from 'next/font/google';
+import { Outfit, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 
 const outfit = Outfit({
@@ -8,9 +8,9 @@ const outfit = Outfit({
   display: 'swap',
 });
 
-const playfair = Playfair_Display({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-plus-jakarta',
   display: 'swap',
 });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${plusJakarta.variable}`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

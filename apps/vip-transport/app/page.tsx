@@ -41,12 +41,12 @@ export default function Home() {
                   <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                   <span className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">The Pinnacle of Travel</span>
                 </div>
-                <h1 className="text-7xl md:text-8xl lg:text-[10rem] font-bold leading-[0.8] tracking-tighter">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight">
                   Your <br />
-                  <span className="text-amber-500 drop-shadow-[0_0_30px_rgba(245,158,11,0.3)]">Ultimate</span> <br />
+                  <span className="text-amber-500">Ultimate</span> <br />
                   Luxury Drive
                 </h1>
-                <p className="text-2xl text-gray-400 leading-relaxed max-w-xl font-light">
+                <p className="text-xl text-gray-400 leading-relaxed max-w-lg font-light">
                   Redefining the art of travel with a curated selection of world-class vehicles and service that transcends expectations.
                 </p>
               </div>

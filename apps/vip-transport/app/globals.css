@@ -25,7 +25,7 @@
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
     --font-outfit: 'Outfit', sans-serif;
-    --font-playfair: 'Playfair Display', serif;
+    --font-plus-jakarta: 'Plus Jakarta Sans', sans-serif;
   }
 
   .dark {
@@ -55,34 +55,40 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-outfit);
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-playfair);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-plus-jakarta);
   }
-  
+
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
   }
-  
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
   }
-  
+
   ::-webkit-scrollbar-track {
     background: #000;
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background: #f59e0b;
     border-radius: 5px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background: #d97706;
   }
@@ -90,6 +96,6 @@
 
 @layer utilities {
   .font-display {
-    font-family: var(--font-playfair);
+    font-family: var(--font-plus-jakarta);
   }
 }
