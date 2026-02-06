@@ -12,7 +12,7 @@ This project is a monorepo for multiple independent Next.js applications that sh
 ```
 industry-websites/
 ├── apps/
-│   ├── website-a/          # Independent Next.js app (port 3000)
+│   ├── vip-transport/      # Independent Next.js app (port 3000)
 │   ├── website-b/          # Independent Next.js app (port 3001)
 │   └── [future-apps]/      # Additional apps can be added
 │

@@ -7,7 +7,7 @@ Intent flow industry standard websites - A monorepo for multiple independent Nex
 ```
 industry-websites/
 ├── apps/
-│   ├── website-a/          # Independent Next.js app (port 3000)
+│   ├── vip-transport/      # Independent Next.js app (port 3000)
 │   │   ├── app/
 │   │   ├── next.config.js
 │   │   ├── package.json
@@ -58,8 +58,8 @@ npm run dev
 
 Or start individual apps:
 ```bash
-# Website A (port 3000)
-cd apps/website-a
+# VIP Transport (port 3000)
+cd apps/vip-transport
 npm run dev
 
 # Website B (port 3001)
@@ -201,7 +201,7 @@ const nextConfig = {
 
 Each app can be deployed independently:
 
-- **Website A**: Deploy `apps/website-a` to your hosting platform
+- **VIP Transport**: Deploy `apps/vip-transport` to your hosting platform
 - **Website B**: Deploy `apps/website-b` to your hosting platform
 
 Each app includes its own environment configuration and can use different databases, APIs, and deployment strategies.
