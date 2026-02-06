@@ -1,16 +1,11 @@
 import type { Metadata } from 'next';
-import { Outfit, Plus_Jakarta_Sans } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 import './globals.css';
 
-const outfit = Outfit({
+const manrope = Manrope({
   subsets: ['latin'],
-  variable: '--font-outfit',
-  display: 'swap',
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  variable: '--font-plus-jakarta',
+  variable: '--font-manrope',
+  weight: ['300', '400', '500', '600', '700', '800'],
   display: 'swap',
 });
 
@@ -26,8 +21,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${plusJakarta.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+    <html lang="en" className={manrope.variable}>
+      <body className={`${manrope.className} font-sans antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }
