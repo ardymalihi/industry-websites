@@ -7,6 +7,14 @@ alwaysApply: true
 
 This project is a monorepo for multiple independent Next.js applications that share code safely without publishing packages.
 
+## Styling & UI Framework
+
+**All websites use:**
+- ✅ **Tailwind CSS** - Utility-first CSS framework for styling
+- ✅ **shadcn/ui** - High-quality React components built on Radix UI and Tailwind CSS
+
+All UI components in `packages/ui/` should be built using Tailwind CSS and can extend shadcn/ui components.
+
 ## Repository Layout
 
 ```
@@ -44,7 +52,7 @@ industry-websites/
 - Apps read environment variables and pass configuration to packages
 
 **What belongs in packages:**
-- ✅ **Common UI components** - Reusable React components, design system components
+- ✅ **Common UI components** - Reusable React components built with Tailwind CSS and shadcn/ui
 - ✅ **Common libraries** - Shared utilities, helpers, formatters
 - ✅ **Common resources** - Assets, images, fonts, icons, scripts, static files
 - ✅ **Intent Flow Platform Communication** - API clients, authentication, platform integration
@@ -73,7 +81,7 @@ When adding shared functionality that should be reused across apps:
 
 **Rule of thumb**: If code is used by more than one app, it belongs in a package.
 
-- **Common UI Components** → `packages/ui/src/`
+- **Common UI Components** → `packages/ui/src/` (built with Tailwind CSS and shadcn/ui)
 - **Utility Functions & Libraries** → `packages/utils/src/`
 - **Common Resources** → Create `packages/assets/` or `packages/resources/` for images, fonts, icons, scripts, static files
 - **Intent Flow Platform API/Communication** → Create `packages/intent-flow-api/src/` or add to appropriate package
@@ -82,22 +90,57 @@ When adding shared functionality that should be reused across apps:
 
 **Important**: 
 - All common functionality, UI components, libraries, and shared code must go in packages
+- All UI components must use Tailwind CSS for styling
+- shadcn/ui components should be added to `packages/ui/` and customized/extended as needed
 - Apps should only contain app-specific code (routes, pages, app-specific configurations)
 - If you find yourself copying code between apps, it should be moved to a package
 
 ### 2. Add to Existing Package
 
-Example: Adding a new component to `packages/ui`:
+Example: Adding a new component to `packages/ui` using Tailwind CSS:
 
 ```tsx
 // packages/ui/src/Card.tsx
+import { cn } from '@intent-flow-package/utils'; // utility for className merging
+
 export interface CardProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-export const Card: React.FC<CardProps> = ({ children }) => {
-  return <div className="card">{children}</div>;
+export const Card: React.FC<CardProps> = ({ children, className }) => {
+  return (
+    <div className={cn(
+      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      className
+    )}>
+      {children}
+    </div>
+  );
 };
+```
+
+**Using shadcn/ui components:**
+
+1. Install shadcn/ui components in `packages/ui/`:
+```bash
+cd packages/ui
+npx shadcn@latest add button
+npx shadcn@latest add card
+```
+
+2. Customize/extend shadcn/ui components in `packages/ui/src/components/`:
+```tsx
+// packages/ui/src/components/Button.tsx
+// Re-export or extend shadcn/ui Button
+export { Button, buttonVariants } from '@/components/ui/button';
+export type { ButtonProps } from '@/components/ui/button';
+```
+
+3. Export from `packages/ui/src/index.ts`:
+```ts
+export { Button } from './components/Button';
+export { Card } from './components/Card';
 ```
 
 ```ts
@@ -272,11 +315,22 @@ export function calculatePercentage(value: number, percentage: number) { ... }
 - Shared packages never access `process.env`
 - Apps read env vars and pass to packages as needed
 
+## Styling Standards
+
+- **Tailwind CSS** - All styling must use Tailwind CSS utility classes
+- **shadcn/ui** - Use shadcn/ui components as the base for all UI components in `packages/ui/`
+- **Component Structure** - shadcn/ui components should be installed in `packages/ui/src/components/ui/`
+- **Customization** - Extend and customize shadcn/ui components in `packages/ui/src/components/` as needed
+- **Tailwind Config** - Each app has its own `tailwind.config.js` that includes packages for proper class detection
+- **No inline styles** - Use Tailwind classes instead of inline styles or CSS modules (except for shadcn/ui component styles)
+
 ## Important Constraints
 
 - **Do not merge apps** - Each app is independent
 - **All common functionality in packages** - UI components, libraries, utilities, platform communication, shared business logic
 - **All common resources in packages** - Assets, images, fonts, icons, scripts, static files
+- **All UI components use Tailwind CSS** - No CSS modules, styled-components, or other CSS-in-JS solutions
+- **shadcn/ui for component base** - All UI components should be based on or extend shadcn/ui components
 - **Apps contain app-specific code only** - Routes, pages, app-specific configurations
 - **Do not publish packages** - All packages are private
 - **Do not use relative imports across apps** - Always use package names (`@intent-flow-package/*`)

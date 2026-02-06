@@ -2,6 +2,14 @@
 
 Intent flow industry standard websites - A monorepo for multiple independent Next.js applications that share code safely, without publishing any packages.
 
+## 🎨 Styling & UI Framework
+
+All websites in this monorepo use:
+- **Tailwind CSS** - Utility-first CSS framework for all styling
+- **shadcn/ui** - High-quality React components built on Radix UI and Tailwind CSS
+
+All UI components in `packages/ui/` are built using Tailwind CSS and extend shadcn/ui components.
+
 ## 📁 Repository Structure
 
 ```
@@ -71,7 +79,7 @@ npm run dev
 
 ### `@intent-flow-package/ui`
 
-Shared UI components that can be used across all apps.
+Shared UI components built with Tailwind CSS and shadcn/ui that can be used across all apps.
 
 **Example:**
 ```tsx
@@ -79,6 +87,8 @@ import { Button } from '@intent-flow-package/ui';
 
 <Button variant="primary" size="md">Click me</Button>
 ```
+
+**Note**: All UI components use Tailwind CSS for styling and are based on shadcn/ui components.
 
 ### `@intent-flow-package/utils`
 
