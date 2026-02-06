@@ -111,7 +111,7 @@ export default function Home() {
         </section>
 
         {/* Luxury Ride Packages Section (Transformed from Fleet) */}
-        <section id="packages" className="relative py-24 px-6 bg-transparent z-10">
+        <section id="packages" className="relative pt-22 pb-32 px-6 bg-transparent z-10">
           <div className="container mx-auto max-w-6xl">
             <div className="flex flex-col md:flex-row items-end justify-between mb-12 border-l-4 border-amber-500 pl-6">
               <div>
