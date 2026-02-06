@@ -33,18 +33,18 @@ export default function Home() {
           <div className="container mx-auto px-6 relative z-20">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Text Content */}
-              <div className="space-y-8">
-                <div className="space-y-4">
+              <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+                <div className="flex flex-col items-center lg:items-start space-y-4">
                   <div className="inline-flex items-center space-x-3 px-5 py-2.5 bg-amber-500/10 border border-amber-500/20 rounded-full backdrop-blur-sm">
                     <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                     <span className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">The Pinnacle of Travel</span>
                   </div>
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight">
                     Your <br />
-                    <span className="text-amber-500">Ultimate</span> <br />
+                    <span className="text-amber-400">Ultimate</span> <br />
                     Luxury Drive
                   </h1>
-                  <p className="text-xl text-gray-400 leading-relaxed max-w-lg font-light">
+                  <p className="text-xl text-gray-400 leading-relaxed max-w-lg font-light mx-auto lg:mx-0">
                     Redefining the art of travel with a curated selection of world-class vehicles and service that transcends expectations.
                   </p>
                 </div>
