@@ -1,0 +1,175 @@
+---
+description: Monorepo structure and conventions for multiple Next.js apps with shared packages
+alwaysApply: true
+---
+
+# Monorepo Structure and Conventions
+
+This project is a monorepo for multiple independent Next.js applications that share code safely without publishing packages.
+
+## Repository Layout
+
+```
+industry-websites/
+├── apps/
+│   ├── website-a/          # Independent Next.js app (port 3000)
+│   ├── website-b/          # Independent Next.js app (port 3001)
+│   └── [future-apps]/      # Additional apps can be added
+│
+├── packages/
+│   ├── ui/                 # Shared UI components
+│   ├── utils/              # Shared utilities
+│   └── [future-packages]/  # Additional shared packages
+│
+├── package.json            # Root workspace config (npm workspaces)
+├── tsconfig.base.json      # Shared TypeScript config
+└── turbo.json              # Turborepo task orchestration
+```
+
+## Strict Rules
+
+### Apps (`apps/*`)
+- **Runnable Next.js applications only**
+- Each app runs on a different port
+- Each app has its own `.env.local` and database configuration
+- Can be deployed independently
+- Never use relative imports to access other apps
+
+### Packages (`packages/*`)
+- **Shared libraries only**
+- Must be marked as `"private": true` in package.json
+- **Never access `process.env`** or assume a database
+- **Never assume Next.js runtime** - packages are runtime-agnostic
+- Apps read environment variables and pass configuration to packages
+
+### Import Rules
+
+**Always use package-style imports:**
+```ts
+// ✅ CORRECT
+import { Button } from '@my-org/ui';
+import { formatDate } from '@my-org/utils';
+
+// ❌ WRONG - Never use relative imports across apps
+import { Button } from '../../packages/ui/src';
+```
+
+## Adding Common Functionality
+
+When adding shared functionality that should be reused across apps:
+
+### 1. Determine the Right Package
+
+- **UI Components** → `packages/ui/src/`
+- **Utility Functions** → `packages/utils/src/`
+- **New Domain** → Create `packages/[domain-name]/src/`
+
+### 2. Add to Existing Package
+
+Example: Adding a new component to `packages/ui`:
+
+```tsx
+// packages/ui/src/Card.tsx
+export interface CardProps {
+  children: React.ReactNode;
+}
+
+export const Card: React.FC<CardProps> = ({ children }) => {
+  return <div className="card">{children}</div>;
+};
+```
+
+```ts
+// packages/ui/src/index.ts
+export { Card } from './Card';
+export type { CardProps } from './Card';
+```
+
+### 3. Create New Package (if needed)
+
+If creating a new shared package:
+
+1. Create directory: `packages/my-package/src/`
+2. Create `package.json`:
+```json
+{
+  "name": "@my-org/my-package",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts"
+}
+```
+
+3. Add to `tsconfig.base.json` paths:
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@my-org/my-package": ["./packages/my-package/src"]
+    }
+  }
+}
+```
+
+4. Update app `next.config.js` to transpile:
+```js
+transpilePackages: ['@my-org/ui', '@my-org/utils', '@my-org/my-package']
+```
+
+5. Use in apps:
+```ts
+import { something } from '@my-org/my-package';
+```
+
+## Package Development Guidelines
+
+### Keep Packages Runtime-Agnostic
+
+```ts
+// ❌ BAD - Accesses environment
+export function getApiUrl() {
+  return process.env.API_URL; // Wrong!
+}
+
+// ✅ GOOD - Accepts configuration
+export function createApiClient(config: { apiUrl: string }) {
+  return { url: config.apiUrl };
+}
+
+// ✅ GOOD - App passes config
+// In app:
+const apiClient = createApiClient({ apiUrl: process.env.NEXT_PUBLIC_API_URL });
+```
+
+### No Business Logic in Packages
+
+Packages should be generic and reusable. Business-specific logic stays in apps.
+
+```ts
+// ❌ BAD - Business-specific
+export function calculateUserDiscount(user: User) { ... }
+
+// ✅ GOOD - Generic utility
+export function calculatePercentage(value: number, percentage: number) { ... }
+```
+
+## TypeScript Configuration
+
+- All packages extend `tsconfig.base.json`
+- Path aliases are defined in `tsconfig.base.json`
+- Each app has its own `tsconfig.json` that extends the base config
+
+## Environment Variables
+
+- Each app manages its own `.env.local`
+- Shared packages never access `process.env`
+- Apps read env vars and pass to packages as needed
+
+## Important Constraints
+
+- **Do not merge apps** - Each app is independent
+- **Do not add business logic to packages** - Keep packages generic
+- **Do not publish packages** - All packages are private
+- **Do not use relative imports across apps** - Always use package names
+- **Focus on structure, isolation, and workspace linking**
