@@ -51,7 +51,7 @@ export function BookingWidget({ userId, children }: BookingWidgetProps) {
                 data-primary-color="#fbbf24"
                 data-border-radius="12px"
                 data-width="100%"
-                data-height="600px"
+                data-height="700px"
                 className="w-full min-h-[600px] isolate bg-black relative z-20"
             />
         </div>

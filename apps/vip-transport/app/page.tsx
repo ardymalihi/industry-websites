@@ -124,7 +124,7 @@ export default function Home() {
                 Premium curated travel experiences designed for comfort, luxury, and point-to-point perfection.
               </p>
             </div>
-            <div className="w-full">
+            <div className="w-full border border-gray-300">
               <BookingWidget userId="a5b93271-5332-4a30-8974-59c45361fb6d">
                 <div className="grid md:grid-cols-3 gap-8">
                   {[
