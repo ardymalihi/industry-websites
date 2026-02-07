@@ -232,7 +232,7 @@ export default function Home() {
               <CardContent>
                 <p className="text-gray-400 mb-2">24/7 Support</p>
                 <a href="tel:+1234567890" className="text-amber-400 hover:text-amber-500 font-semibold text-lg">
-                  +1 (234) 567-890
+                  +1 (416) 678-8080
                 </a>
               </CardContent>
             </Card>
@@ -245,8 +245,8 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-400 mb-2">Send us a message</p>
-                <a href="mailto:info@eliteride.com" className="text-amber-400 hover:text-amber-500 font-semibold">
-                  info@eliteride.com
+                <a href="mailto:mlsexecutivecarservice@gmail.com" className="text-amber-400 hover:text-amber-500 font-semibold">
+                  mlsexecutivecarservice@gmail.com
                 </a>
               </CardContent>
             </Card>
@@ -304,7 +304,7 @@ export default function Home() {
           </div>
           <Separator className="bg-gray-900" />
           <div className="mt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} EliteRide. All rights reserved.</p>
+            <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} MLS Executive Car Service. All rights reserved.</p>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
               {/* Social media icons would go here */}
             </div>

@@ -10,8 +10,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'EliteRide - Premium VIP Transportation Services',
-  description: 'Experience luxury travel with EliteRide. Premium fleet, professional chauffeurs, and unmatched service for airport transfers, corporate events, and special occasions.',
+  title: 'MLS Executive Car Service - Premium VIP Transportation Services',
+  description: 'Experience luxury travel with MLS Executive Car Service. Premium fleet, professional chauffeurs, and unmatched service for airport transfers, corporate events, and special occasions.',
   keywords: 'VIP transportation, luxury car service, airport transfers, corporate transportation, premium chauffeur service',
 };
 

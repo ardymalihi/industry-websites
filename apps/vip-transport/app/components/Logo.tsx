@@ -7,11 +7,11 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function Logo({ 
-  className = '', 
-  showText = true, 
+export function Logo({
+  className = '',
+  showText = true,
   variant = 'light',
-  size = 'md' 
+  size = 'md'
 }: LogoProps) {
   const sizeClasses = {
     sm: { icon: 'w-8 h-8', iconInner: 'w-5 h-5', text: 'text-xl' },
@@ -20,8 +20,8 @@ export function Logo({
   };
 
   const currentSize = sizeClasses[size];
-  const textColor = variant === 'dark' 
-    ? 'text-white' 
+  const textColor = variant === 'dark'
+    ? 'text-white'
     : 'bg-gradient-to-r from-amber-600 to-amber-800 bg-clip-text text-transparent';
 
   return (
@@ -30,11 +30,11 @@ export function Logo({
       <div className={`${currentSize.icon} bg-gradient-to-br from-amber-500 to-amber-700 rounded-lg flex items-center justify-center`}>
         <Car className={`${currentSize.iconInner} text-white`} />
         {/* To use your own logo image, replace the Car icon above with: */}
-        {/* <img src="/logo.png" alt="EliteRide" className="w-full h-full object-contain" /> */}
+        {/* <img src="/logo.png" alt="MLS Executive Car Service" className="w-full h-full object-contain" /> */}
       </div>
       {showText && (
         <span className={`${currentSize.text} font-bold ${textColor}`}>
-          EliteRide
+          MLS Executive Car Service
         </span>
       )}
     </div>
@@ -52,7 +52,7 @@ export function Logo({
  *      <YourLogoSVG className="w-full h-full" />
  * 
  * 2. Update company name:
- *    - Search and replace "EliteRide" throughout the codebase
+ *    - Search and replace "MLS Executive Car Service" throughout the codebase
  *    - Update in: page.tsx, layout.tsx (metadata), and this file
  * 
  * 3. Update brand colors:
