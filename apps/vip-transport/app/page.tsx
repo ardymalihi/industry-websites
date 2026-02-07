@@ -246,7 +246,7 @@ export default function Home() {
               <CardContent>
                 <p className="text-gray-400 mb-2">Send us a message</p>
                 <a href="mailto:mlsexecutivecarservice@gmail.com" className="text-amber-400 hover:text-amber-500 font-semibold">
-                  mlsexecutivecarservice@gmail.com
+                  MLSExecutiveCarService@gmail.com
                 </a>
               </CardContent>
             </Card>
