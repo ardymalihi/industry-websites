@@ -36,10 +36,10 @@ export function BookingWidget({ userId, children }: BookingWidgetProps) {
     }, []);
 
     return (
-        <div className="w-full relative">
-            {/* Fallback Content: Show while loading or if failed */}
-            {(!isLoaded || hasError) && children && (
-                <div className={isLoaded ? 'hidden' : 'block'}>
+        <div className="w-full relative min-h-[400px]">
+            {/* Fallback Content: Only show if an error occurred */}
+            {hasError && children && (
+                <div className="w-full animate-in fade-in duration-500">
                     {children}
                 </div>
             )}
@@ -49,7 +49,7 @@ export function BookingWidget({ userId, children }: BookingWidgetProps) {
                 data-user-id={userId}
                 data-width="100%"
                 data-height="600px"
-                className={`w-full ${isLoaded && !hasError ? 'min-h-[600px] opacity-100' : 'h-0 opacity-0'} transition-opacity duration-500`}
+                className={`w-full min-h-[600px] transition-opacity duration-1000 ${isLoaded && !hasError ? 'opacity-100' : hasError ? 'h-0 opacity-0 overflow-hidden' : 'opacity-100'}`}
             />
         </div>
     );
