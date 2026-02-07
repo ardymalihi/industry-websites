@@ -47,9 +47,12 @@ export function BookingWidget({ userId, children }: BookingWidgetProps) {
             <div
                 id="service-booking-widget"
                 data-user-id={userId}
+                data-theme="dark"
+                data-primary-color="#fbbf24"
+                data-border-radius="12px"
                 data-width="100%"
                 data-height="600px"
-                className={`w-full min-h-[600px] transition-opacity duration-1000 ${isLoaded && !hasError ? 'opacity-100' : hasError ? 'h-0 opacity-0 overflow-hidden' : 'opacity-100'}`}
+                className="w-full min-h-[600px] isolate bg-black relative z-20"
             />
         </div>
     );
