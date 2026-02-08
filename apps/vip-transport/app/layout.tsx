@@ -1,11 +1,18 @@
 import type { Metadata } from 'next';
-import { Manrope } from 'next/font/google';
+import { Manrope, Playfair_Display } from 'next/font/google';
 import './globals.css';
 
 const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-manrope',
   weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  weight: ['400', '700'],
   display: 'swap',
 });
 
@@ -21,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={manrope.variable}>
+    <html lang="en" className={`${manrope.variable} ${playfair.variable}`}>
       <body className={`${manrope.className} font-sans antialiased`}>
         {children}
       </body>
