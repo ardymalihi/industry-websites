@@ -38,7 +38,7 @@ export function Logo({
             <text x="80" y="105" fontSize="72" textAnchor="middle">S</text>
 
             {/* The 'L' - Left Base (Middle Layer) */}
-            <text x="47" y="95" fontSize="72" textAnchor="middle">L</text>
+            <text x="48" y="92" fontSize="72" textAnchor="middle">L</text>
 
             {/* The 'M' - Center Top Overlay (Top Layer) */}
             <text x="30" y="78" fontSize="88" textAnchor="middle" strokeWidth="2" paintOrder="stroke">M</text>
