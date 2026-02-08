@@ -13,9 +13,9 @@ export function Logo({
   size = 'md'
 }: LogoProps) {
   const sizeClasses = {
-    sm: { icon: 'w-8 h-8', iconInner: 'w-5 h-5', text: 'text-xl' },
-    md: { icon: 'w-10 h-10', iconInner: 'w-6 h-6', text: 'text-2xl' },
-    lg: { icon: 'w-12 h-12', iconInner: 'w-8 h-8', text: 'text-3xl' },
+    sm: { icon: 'w-10 h-10', iconInner: 'w-7 h-7', text: 'text-2xl' },
+    md: { icon: 'w-14 h-14', iconInner: 'w-10 h-10', text: 'text-3xl' },
+    lg: { icon: 'w-20 h-20', iconInner: 'w-14 h-14', text: 'text-4xl' },
   };
 
   const currentSize = sizeClasses[size];
