@@ -14,7 +14,7 @@ const VAPI_WIDGET_ATTRIBUTES: Record<string, string> = {
     'accent-color': '#fbbf24',
     'button-base-color': '#1F2937',
     'button-accent-color': '#FFFFFF',
-    'border-radius': 'full',
+    'border-radius': 'medium',
     'main-label': 'AI Assistant',
     'start-button-text': 'Chat with us',
     'empty-chat-message': 'How can I help you?',

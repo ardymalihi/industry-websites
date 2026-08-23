@@ -229,11 +229,19 @@ export default function Home() {
                 </div>
                 <CardTitle className="text-white">Phone</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-gray-400 mb-2">24/7 Support</p>
-                <a href="tel:+1234567890" className="text-amber-400 hover:text-amber-500 font-semibold text-lg">
-                  +1 (416) 678-8080
-                </a>
+              <CardContent className="space-y-4">
+                <div>
+                  <p className="text-gray-400 mb-2">AI Assistant · Available 24/7</p>
+                  <a href="tel:+14344339592" className="text-amber-400 hover:text-amber-500 font-semibold text-lg">
+                    +1 (434) 433-9592
+                  </a>
+                </div>
+                <div>
+                  <p className="text-gray-400 mb-2">Office · 9am–10pm ET</p>
+                  <a href="tel:+14166788080" className="text-amber-400 hover:text-amber-500 font-semibold text-lg">
+                    +1 (416) 678-8080
+                  </a>
+                </div>
               </CardContent>
             </Card>
             <Card className="bg-black border-gray-800 text-center">
