@@ -2,42 +2,41 @@
 
 import { useEffect, useState } from 'react';
 
+const WIDGET_SCRIPT_SRC = 'https://www.intentflow.pro/service-booking-widget.js';
+
 interface BookingWidgetProps {
-    userId: string;
     children?: React.ReactNode;
 }
 
-export function BookingWidget({ userId, children }: BookingWidgetProps) {
-    const [isLoaded, setIsLoaded] = useState(false);
+export function BookingWidget({ children }: BookingWidgetProps) {
     const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
-        // Only run on client side
-        const script = document.createElement('script');
-        const baseUrl = process.env.NEXT_PUBLIC_WIDGET_BASE_URL || "http://localhost:3000";
-        script.src = `${baseUrl}/service-booking-widget.js`;
-        script.async = true;
+        // Avoid re-loading the script if it's already on the page
+        if (document.querySelector('script[src*="service-booking-widget.js"]')) {
+            return;
+        }
 
-        script.onload = () => {
-            setIsLoaded(true);
-        };
+        const script = document.createElement('script');
+        script.src = WIDGET_SCRIPT_SRC;
+        script.async = true;
 
         script.onerror = () => {
             setHasError(true);
         };
 
-        // Add script to the document
         document.body.appendChild(script);
 
         return () => {
-            // Cleanup script on unmount
-            document.body.removeChild(script);
+            if (script.parentNode) {
+                script.parentNode.removeChild(script);
+            }
         };
     }, []);
 
     return (
-        <div className="w-full relative min-h-[400px]">
-            {/* Fallback Content: Only show if an error occurred */}
+        <div className="w-full relative">
+            {/* Fallback content: shown only when the widget script fails to load */}
             {hasError && children && (
                 <div className="w-full animate-in fade-in duration-500">
                     {children}
@@ -46,13 +45,15 @@ export function BookingWidget({ userId, children }: BookingWidgetProps) {
 
             <div
                 id="service-booking-widget"
-                data-user-id={userId}
+                data-user-id="6d661af6-540f-4b71-9b43-bdd8da46aee8"
+                data-assistant-id="d66e94ef-4ae3-45fc-90ad-f5b78e434512"
                 data-theme="dark"
                 data-primary-color="#fbbf24"
                 data-border-radius="12px"
                 data-width="100%"
-                data-height={hasError ? "auto" : "800px"}
-                className={`w-full isolate bg-transparent relative z-20 ${hasError ? "" : "min-h-[800px]"}`}
+                data-height="auto"
+                data-show-price="true"
+                className="w-full isolate bg-transparent relative z-20"
             />
         </div>
     );

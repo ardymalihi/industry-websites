@@ -125,7 +125,7 @@ export default function Home() {
               </p>
             </div>
             <div className="w-full">
-              <BookingWidget userId="a5b93271-5332-4a30-8974-59c45361fb6d">
+              <BookingWidget>
                 <div className="grid md:grid-cols-3 gap-8">
                   {[
                     {
