@@ -34,8 +34,8 @@ export default function Home() {
           <div className="mb-4">
             <p className="mb-2">Shared Button Component:</p>
             <div className="flex gap-4 flex-wrap">
-              <Button variant="primary" size="lg">Large Primary</Button>
-              <Button variant="secondary" size="md">Medium Secondary</Button>
+              <Button variant="default" size="lg">Large Primary</Button>
+              <Button variant="secondary" size="default">Medium Secondary</Button>
               <Button variant="outline" size="sm">Small Outline</Button>
             </div>
           </div>
