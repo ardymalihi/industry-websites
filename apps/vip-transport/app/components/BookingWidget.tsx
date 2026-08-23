@@ -52,7 +52,7 @@ export function BookingWidget({ children }: BookingWidgetProps) {
                 data-border-radius="12px"
                 data-width="100%"
                 data-height="auto"
-                data-show-price="true"
+                data-show-price="false"
                 className="w-full isolate bg-transparent relative z-20"
             />
         </div>

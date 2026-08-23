@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Manrope, Playfair_Display } from 'next/font/google';
+import { VapiWidget } from './components/VapiWidget';
 import './globals.css';
 
 const manrope = Manrope({
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en" className={`${manrope.variable} ${playfair.variable}`}>
       <body className={`${manrope.className} font-sans antialiased`}>
         {children}
+        <VapiWidget />
       </body>
     </html>
   );
